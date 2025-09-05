@@ -126,7 +126,7 @@ export const DataTable = <TData, TValue>({
                     </div>
                     <div className="flex items-center justify-end space-x-1">
                         <Button
-                            variant="outline"
+                            variant="pagination"
                             size="sm"
                             onClick={() => table.previousPage()}
                             disabled={!table.getCanPreviousPage()}
@@ -143,7 +143,7 @@ export const DataTable = <TData, TValue>({
                                         table.getState().pagination
                                             .pageIndex === page
                                             ? "default"
-                                            : "outline"
+                                            : "pagination"
                                     }
                                     size="sm"
                                     className="w-6 h-6"
@@ -154,7 +154,7 @@ export const DataTable = <TData, TValue>({
                             )
                         )}
                         <Button
-                            variant="outline"
+                            variant="pagination"
                             size="sm"
                             onClick={() => table.nextPage()}
                             disabled={!table.getCanNextPage()}
