@@ -1,4 +1,4 @@
-import { Button } from "./components/ui/button";
+import { AddTransactionModal } from "./features/transactions/components/AddTransactionModal";
 import { columns } from "./features/transactions/components/Columns";
 import { DataTable } from "./features/transactions/components/DataTable";
 import type { Transaction } from "./features/transactions/types";
@@ -49,7 +49,7 @@ function App() {
             <section className="p-10 bg-white rounded-lg">
                 <header className="flex justify-between">
                     <h1 className="text-xl font-bold">Transactions</h1>
-                    <Button>Add Transaction</Button>
+                    <AddTransactionModal />
                 </header>
                 <div className="mt-4">
                     <DataTable columns={columns} data={sampleTransactions} />

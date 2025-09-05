@@ -167,7 +167,7 @@ export const columns: ColumnDef<Transaction>[] = [
                             ? "bg-yellow-100"
                             : status === "Settled"
                             ? "bg-green-100"
-                            : "bg-gray-100"
+                            : "bg-red-100"
                     }`}
                 >
                     <div
@@ -176,7 +176,7 @@ export const columns: ColumnDef<Transaction>[] = [
                                 ? "text-yellow-700"
                                 : status === "Settled"
                                 ? "text-green-700"
-                                : "text-gray-700"
+                                : "text-red-700"
                         }`}
                     >
                         {status}
