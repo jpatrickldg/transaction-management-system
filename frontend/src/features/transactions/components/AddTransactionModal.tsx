@@ -13,8 +13,21 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { NewTransactionSchema, type NewTransaction } from "../types";
 import { TransactionForm } from "./TransactionForm";
+import { useState } from "react";
+import { createTransaction } from "../api/createTransaction";
+import { toast } from "sonner";
+import { Loader2Icon } from "lucide-react";
 
-export const AddTransactionModal = () => {
+interface AddTransactionModalProps {
+    loadTransactions: () => Promise<void>;
+}
+
+export const AddTransactionModal = ({
+    loadTransactions,
+}: AddTransactionModalProps) => {
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
+
     const form = useForm<NewTransaction>({
         resolver: zodResolver(NewTransactionSchema),
         defaultValues: {
@@ -25,8 +38,21 @@ export const AddTransactionModal = () => {
         },
     });
 
-    const onSubmit = async (values: NewTransaction) => {
-        console.log(values);
+    const onSubmit = async (newTransaction: NewTransaction) => {
+        setLoading(true);
+        setError(null);
+        try {
+            await createTransaction(newTransaction);
+            toast("Transaction has been created");
+            form.reset();
+            loadTransactions();
+        } catch (error: any) {
+            setError(
+                error.message || "Something went wrong. Please try again later."
+            );
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -42,13 +68,25 @@ export const AddTransactionModal = () => {
                     </DialogDescription>
                 </DialogHeader>
                 {/* FORM */}
+                {error && <p className="text-destructive text-sm">{error}</p>}
                 <TransactionForm form={form} />
                 <DialogFooter>
                     <DialogClose asChild>
                         <Button variant="outline">Cancel</Button>
                     </DialogClose>
-                    <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
-                        Submit
+                    <Button
+                        type="submit"
+                        onClick={form.handleSubmit(onSubmit)}
+                        disabled={loading}
+                    >
+                        {loading ? (
+                            <>
+                                <Loader2Icon className="animate-spin" />
+                                Loading
+                            </>
+                        ) : (
+                            "Submit"
+                        )}
                     </Button>
                 </DialogFooter>
             </DialogContent>
