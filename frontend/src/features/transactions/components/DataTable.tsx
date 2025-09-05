@@ -44,7 +44,7 @@ export const DataTable = <TData, TValue>({
     });
 
     return (
-        <div className="">
+        <div data-testid="transactions-table" className="">
             <div className="overflow-hidden rounded-md border min-h-[491.5px]">
                 <Table>
                     <TableHeader>

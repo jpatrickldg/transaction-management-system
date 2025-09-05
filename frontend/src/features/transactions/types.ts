@@ -10,9 +10,8 @@ export const NewTransactionSchema = z.object({
     amount: z.coerce
         .number<number>({ error: "Amount is required." })
         .refine((val) => val !== 0, {
-            message: "Amount is required.",
+            message: "Amount is required and cannot be 0.",
         }),
-    // amount: coercedNumber(),
 });
 
 export const TransactionSchema = NewTransactionSchema.extend({
