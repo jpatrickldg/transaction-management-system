@@ -12,7 +12,16 @@ export const createTransaction = async (newTransaction: NewTransaction) => {
         });
 
         if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
+            let message = `Response status: ${response.status}`;
+            try {
+                const errorData = await response.json();
+                if (errorData?.message) {
+                    message = errorData.message;
+                }
+            } catch {
+                // No JSON body, fallback to status-based message
+            }
+            throw new Error(message);
         }
 
         return response.json();

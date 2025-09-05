@@ -27,6 +27,22 @@ export const addTransaction = ({
     accountHolderName,
     amount,
 }) => {
+    // Existing account validation
+    const transactions = getTransactions();
+    const normalize = (accountNumber) => accountNumber.replace(/-/g, "");
+    const existing = transactions.find(
+        (transaction) =>
+            normalize(transaction.accountNumber) === normalize(accountNumber)
+    );
+
+    if (existing && existing.accountHolderName !== accountHolderName) {
+        const error = new Error(
+            "Account number is linked with a different account name."
+        );
+        error.status = 400;
+        throw error;
+    }
+
     // Randomize status for new transaction
     const statuses = ["Pending", "Settled", "Failed"];
     const status = statuses[Math.floor(Math.random() * statuses.length)];
@@ -55,5 +71,3 @@ export const addTransaction = ({
         status,
     };
 };
-
-// 2025-09-04T07:43:45.489Z

@@ -3,6 +3,7 @@ import {
     createTransaction,
     getAllTransactions,
 } from "../controllers/transactionController.js";
+import { validateTransaction } from "../middleware/validateTransaction.js";
 
 const router = express.Router();
 
@@ -10,6 +11,6 @@ const router = express.Router();
 router.get("/", getAllTransactions);
 
 // Create transaction
-router.post("/", createTransaction);
+router.post("/", validateTransaction, createTransaction);
 
 export default router;

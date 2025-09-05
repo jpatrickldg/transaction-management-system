@@ -59,14 +59,8 @@ export const columns: ColumnDef<Transaction>[] = [
         ),
         cell: ({ row }) => {
             const accountNumber = row.original.accountNumber;
-            const formattedAccountNumber = accountNumber.replace(
-                /(\d{4})(?=\d)/g,
-                "$1-"
-            );
 
-            return (
-                <div className="tracking-wide">{formattedAccountNumber}</div>
-            );
+            return <div className="tracking-wide">{accountNumber}</div>;
         },
     },
     {
