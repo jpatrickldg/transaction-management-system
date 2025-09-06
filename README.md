@@ -197,24 +197,30 @@ npm run test
 
 The application is **mobile responsive** and supports **light and dark mode**. Key views are shown below:
 
-**Transactions Table**
+### Transactions Table
 
 ![Desktop transaction table - dark](./screenshots/dark-desktop-table.png)
+
 ![Desktop transaction table - light](./screenshots/light-desktop-table.png)
+
 ![Mobile transaction cards - dark](./screenshots/dark-mobile-cards.png)
+
 ![Mobile transaction cards - light](./screenshots/light-mobile-cards.png)
 
-**Transaction Form**
+### Transaction Form
 
 ![Desktop transaction form - dark](./screenshots/dark-desktop-form.png)
+
 ![Mobile transaction form - light](./screenshots/light-mobile-form.png)
 
-**Transaction Form Errors**
+### Transaction Form Errors
 
 ![Desktop transaction form errors - dark](./screenshots/dark-desktop-form-errors.png)
+
 ![Mobile transaction form errors - light](./screenshots/light-mobile-form-errors.png)
 
-**Transaction Form Added**
+### Transaction Form Added
 
 ![Desktop transaction form success - dark](./screenshots/dark-desktop-success.png)
+
 ![Mobile transaction form success - light](./screenshots/light-mobile-success.png)
