@@ -1,3 +1,4 @@
+import { ModeToggle } from "@/components/ModeToggle";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchTransactions } from "@/features/transactions/api/getTransactions";
@@ -39,16 +40,19 @@ export const Transactions = () => {
                 data-testid="mobile-transactions-view"
                 className="lg:hidden h-full flex flex-col gap-4 overflow-y-auto"
             >
-                <header className="flex items-center justify-between px-4 pt-4 md:px-6">
-                    <h1 className="text-xl font-bold">Transactions</h1>
-                    {!loading && !error && (
-                        <AddTransactionModal
-                            loadTransactions={loadTransactions}
-                        />
-                    )}
+                <header className="flex justify-between px-4 pt-4 md:px-6">
+                    <div className="flex flex-col justify-center sm:items-center sm:flex-row gap-1 sm:gap-4">
+                        <h1 className="text-xl font-bold">Transactions</h1>
+                        {!loading && !error && (
+                            <AddTransactionModal
+                                loadTransactions={loadTransactions}
+                            />
+                        )}
+                    </div>
+                    <ModeToggle />
                 </header>
                 {loading && (
-                    <Skeleton className="h-60 w-[300px] mx-auto rounded-md" />
+                    <Skeleton className="h-60 w-[300px] mx-auto rounded-md bg-card" />
                 )}
                 {error && (
                     <div className="flex-1 flex flex-col items-center justify-center gap-1 px-4 md:px-6">
@@ -84,7 +88,7 @@ export const Transactions = () => {
             {/* DESKTOP */}
             <section
                 data-testid="desktop-transactions-view"
-                className="hidden lg:block p-10 bg-white rounded-lg"
+                className="hidden lg:block px-10 py-8 bg-card text-card-foreground rounded"
             >
                 <header className="flex justify-between">
                     <h1 className="text-xl font-bold">Transactions</h1>

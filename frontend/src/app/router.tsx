@@ -1,10 +1,13 @@
 import { MainLayout } from "@/components/layouts/MainLayout";
 import { Transactions } from "./routes/transactions/Transactions";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const AppRouter = () => {
     return (
-        <MainLayout>
-            <Transactions />
-        </MainLayout>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+            <MainLayout>
+                <Transactions />
+            </MainLayout>
+        </ThemeProvider>
     );
 };

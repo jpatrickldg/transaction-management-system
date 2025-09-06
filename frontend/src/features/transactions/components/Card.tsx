@@ -11,7 +11,7 @@ export const Card = ({ transaction }: CardProps) => {
         currency: "PHP",
     }).format(transaction.amount);
     return (
-        <div className="relative bg-white rounded-md p-4 basis-[300px] space-y-2 text-sm">
+        <div className="relative bg-card text-card-foreground rounded-md p-4 sm:basis-[300px] basis-full space-y-2 text-sm">
             <div
                 className={`w-fit px-3 py-0.5 ml-auto rounded-full absolute top-4 right-4 ${
                     transaction.status === "Pending"

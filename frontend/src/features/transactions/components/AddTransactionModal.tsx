@@ -58,7 +58,9 @@ export const AddTransactionModal = ({
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button>Add Transaction</Button>
+                <Button variant={"default"} size={"sm"}>
+                    Add Transaction
+                </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -72,10 +74,13 @@ export const AddTransactionModal = ({
                 <TransactionForm form={form} />
                 <DialogFooter>
                     <DialogClose asChild>
-                        <Button variant="outline">Cancel</Button>
+                        <Button variant={"outline"} size={"sm"}>
+                            Cancel
+                        </Button>
                     </DialogClose>
                     <Button
                         type="submit"
+                        size={"sm"}
                         onClick={form.handleSubmit(onSubmit)}
                         disabled={loading}
                     >

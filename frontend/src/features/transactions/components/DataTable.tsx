@@ -45,7 +45,7 @@ export const DataTable = <TData, TValue>({
 
     return (
         <div data-testid="transactions-table" className="">
-            <div className="overflow-hidden rounded-md border min-h-[491.5px]">
+            <div className="overflow-hidden rounded border min-h-[491.5px]">
                 <Table>
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
