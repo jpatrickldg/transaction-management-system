@@ -61,7 +61,7 @@ describe("API integration tests", () => {
         expect(res.status).toBe(400);
         expect(res.body).toHaveProperty(
             "message",
-            "Account number is linked with a different account name."
+            "Account number is linked with a different account holder name."
         );
     });
 });

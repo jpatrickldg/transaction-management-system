@@ -28,10 +28,10 @@ describe("Transactions page tests", () => {
     });
 
     it("should render Transactions table", async () => {
-        const accountName = await within(desktopSection).findByText(
+        const accountHolderName = await within(desktopSection).findByText(
             "Test User"
         );
-        expect(accountName).toBeInTheDocument();
+        expect(accountHolderName).toBeInTheDocument();
     });
 
     it("should have Add Transaction button", async () => {
@@ -111,22 +111,23 @@ describe("Transaction form tests", () => {
         ).not.toBeInTheDocument();
     });
 
-    it("should throw an error when account name is empty", async () => {
+    it("should throw an error when account holder name is empty", async () => {
         const submitButton = screen.getByRole("button", { name: /Submit/i });
         await userEvent.click(submitButton);
 
         expect(
-            await screen.findByText(/Account name is required/i)
+            await screen.findByText(/Account holder name is required/i)
         ).toBeInTheDocument();
     });
 
-    it("should accept correct account name", async () => {
+    it("should accept correct account holder name", async () => {
         const submitButton = screen.getByRole("button", { name: /Submit/i });
-        const accountNameInput = screen.getByLabelText(/Account Name/i);
-        await userEvent.type(accountNameInput, "test");
+        const accountHolderNameInput =
+            screen.getByLabelText(/Account Holder Name/i);
+        await userEvent.type(accountHolderNameInput, "test");
         await userEvent.click(submitButton);
         expect(
-            screen.queryByText(/Account Name is required/i)
+            screen.queryByText(/Account Holder Name is required/i)
         ).not.toBeInTheDocument();
     });
 
@@ -169,7 +170,7 @@ describe("Transaction form tests", () => {
             "111122223333"
         );
         await userEvent.type(
-            screen.getByLabelText(/Account Name/i),
+            screen.getByLabelText(/Account Holder Name/i),
             "Test User Two"
         );
         await userEvent.type(screen.getByLabelText(/Amount/i), "100");
@@ -238,7 +239,7 @@ describe("Transactions page tests with empty state and errors", () => {
             "111122223333"
         );
         await userEvent.type(
-            screen.getByLabelText(/Account Name/i),
+            screen.getByLabelText(/Account Holder Name/i),
             "Fail User"
         );
         await userEvent.type(screen.getByLabelText(/Amount/i), "100");

@@ -44,7 +44,7 @@ export const Card = ({ transaction }: CardProps) => {
                 </p>
             </div>
             <div>
-                <p className="text-sm font-medium">Account Name</p>
+                <p className="text-sm font-medium">Account Holder Name</p>
                 <p className="">{transaction.accountHolderName}</p>
             </div>
             <div>

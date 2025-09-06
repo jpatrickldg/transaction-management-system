@@ -109,7 +109,7 @@ export const TransactionForm = ({ form }: TransactionFormProps) => {
                     name="accountHolderName"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Account Name</FormLabel>
+                            <FormLabel>Account Holder Name</FormLabel>
                             <FormControl>
                                 <Input {...field} />
                             </FormControl>

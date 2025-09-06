@@ -35,7 +35,7 @@ export const addTransaction = ({
 
     if (existing && existing.accountHolderName !== accountHolderName) {
         const error = new Error(
-            "Account number is linked with a different account name."
+            "Account number is linked with a different account holder name."
         );
         error.status = 400;
         throw error;

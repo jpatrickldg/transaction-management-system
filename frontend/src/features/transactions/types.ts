@@ -3,7 +3,7 @@ import { z } from "zod";
 // Used for creating transaction
 export const NewTransactionSchema = z.object({
     transactionDate: z.date("Invalid date."),
-    accountHolderName: z.string().min(1, "Account name is required."),
+    accountHolderName: z.string().min(1, "Account holder name is required."),
     accountNumber: z
         .string()
         .regex(/^\d{12}$/, "Account number must be 12 digits."),

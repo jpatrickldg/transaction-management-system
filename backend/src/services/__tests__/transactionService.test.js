@@ -32,7 +32,9 @@ describe("Transaction service tests", () => {
                 accountHolderName: "Jane Doe",
                 amount: 200,
             })
-        ).toThrow("Account number is linked with a different account name.");
+        ).toThrow(
+            "Account number is linked with a different account holder name."
+        );
     });
 
     it("should append new row and returns object with addTransaction", () => {

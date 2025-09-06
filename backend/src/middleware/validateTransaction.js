@@ -10,7 +10,8 @@ export const validateTransaction = (req, res, next) => {
     // Required fields validation
     if (!transactionDate) return sendError("Transaction date is required.");
     if (!accountNumber) return sendError("Account number is required.");
-    if (!accountHolderName) return sendError("Account name is required.");
+    if (!accountHolderName)
+        return sendError("Account holder name is required.");
     if (amount === undefined || amount === null)
         return sendError("Amount is required.");
 

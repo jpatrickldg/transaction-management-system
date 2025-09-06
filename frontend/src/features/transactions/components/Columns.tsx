@@ -71,7 +71,7 @@ export const columns: ColumnDef<Transaction>[] = [
         accessorKey: "accountHolderName",
         header: ({ column }) => (
             <div className="min-w-40 flex items-center gap-1">
-                <span className="">ACCOUNT NAME</span>
+                <span className="">ACCOUNT HOLDER NAME</span>
                 <Button
                     variant={"ghost"}
                     className="h-6 w-6"
