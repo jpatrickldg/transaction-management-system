@@ -14,7 +14,7 @@ describe("Transaction service tests", () => {
         expect(result).toEqual([
             {
                 transactionDate: "2025-01-01",
-                accountNumber: "1234-5678-9012",
+                accountNumber: "123456789012",
                 accountHolderName: "John Doe",
                 amount: 100.5,
                 status: "Pending",

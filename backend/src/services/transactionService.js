@@ -14,7 +14,7 @@ export const getTransactions = () => {
 
     return records.map((record) => ({
         transactionDate: record["Transaction Date"],
-        accountNumber: record["Account Number"],
+        accountNumber: record["Account Number"].replace(/-/g, ""), // normalize
         accountHolderName: record["Account Holder Name"],
         amount: parseFloat(record["Amount"]),
         status: record["Status"],
@@ -29,10 +29,8 @@ export const addTransaction = ({
 }) => {
     // Existing account validation
     const transactions = getTransactions();
-    const normalize = (accountNumber) => accountNumber.replace(/-/g, "");
     const existing = transactions.find(
-        (transaction) =>
-            normalize(transaction.accountNumber) === normalize(accountNumber)
+        (transaction) => transaction.accountNumber === accountNumber
     );
 
     if (existing && existing.accountHolderName !== accountHolderName) {

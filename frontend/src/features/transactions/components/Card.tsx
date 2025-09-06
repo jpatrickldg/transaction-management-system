@@ -39,7 +39,9 @@ export const Card = ({ transaction }: CardProps) => {
             </div>
             <div>
                 <p className="text-sm font-medium">Account Number</p>
-                <p className="tracking-wide">{transaction.accountNumber}</p>
+                <p className="tracking-wide">
+                    {transaction.accountNumber.replace(/(\d{4})(?=\d)/g, "$1-")}
+                </p>
             </div>
             <div>
                 <p className="text-sm font-medium">Account Name</p>
