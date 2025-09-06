@@ -11,7 +11,8 @@ export const validateTransaction = (req, res, next) => {
     if (!transactionDate) return sendError("Transaction date is required.");
     if (!accountNumber) return sendError("Account number is required.");
     if (!accountHolderName) return sendError("Account name is required.");
-    if (!amount) return sendError("Amount is required.");
+    if (amount === undefined || amount === null)
+        return sendError("Amount is required.");
 
     // Date validation
     const date = new Date(transactionDate);

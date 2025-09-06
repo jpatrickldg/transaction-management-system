@@ -4,8 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node src/server",
-        "dev": "node --watch --env-file=.env src/server"
+        "start": "node --env-file=.env src/server",
+        "dev": "node --watch --env-file=.env src/server",
+        "test": "vitest"
     },
     "keywords": [],
     "author": "",
@@ -15,5 +16,9 @@
         "cors": "^2.8.5",
         "csv-parse": "^6.1.0",
         "express": "^5.1.0"
+    },
+    "devDependencies": {
+        "supertest": "^7.1.4",
+        "vitest": "^3.2.4"
     }
 }
