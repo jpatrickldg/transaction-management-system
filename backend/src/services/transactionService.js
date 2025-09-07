@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { parse } from "csv-parse/sync";
+import { stringify } from "csv-stringify/sync";
 
 const filePath = path.resolve("src/data/transactions.csv");
 
@@ -57,9 +58,19 @@ export const addTransaction = ({
     // Format amount to add two decimal places when saving to CSV
     const formattedAmount = parseFloat(amount).toFixed(2);
 
-    const newRow = `\n${formattedDate},${formattedAccountNumber},${accountHolderName},${formattedAmount},${status}`;
+    const newRow = [
+        formattedDate,
+        formattedAccountNumber,
+        accountHolderName,
+        formattedAmount,
+        status,
+    ];
+    const csvRow = stringify([newRow], { header: false });
 
-    fs.appendFileSync(filePath, newRow, "utf-8");
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+    const needsNewLine = !fileContent.endsWith("\n");
+
+    fs.appendFileSync(filePath, (needsNewLine ? "\n" : "") + csvRow, "utf-8");
 
     return {
         transactionDate: formattedDate,
